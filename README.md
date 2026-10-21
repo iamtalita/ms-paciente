@@ -38,11 +38,6 @@ docker compose up --build
 | PATCH | `/api/v1/pacientes/{paciente_id}` | Atualiza dados cadastrais |
 | DELETE | `/api/v1/pacientes/{paciente_id}` | Desativa cadastro sem apagar o registro |
 
-## Exemplo de cadastro
-
-Use dados fictícios. `ubs_id` deve ser um UUID; nesta versão isolada ele não é validado contra o microserviço de UBS.
-
-```json
 {
   "nome": "Maria da Silva",
   "cpf": "529.982.247-25",
@@ -55,7 +50,6 @@ Use dados fictícios. `ubs_id` deve ser um UUID; nesta versão isolada ele não 
 }
 ```
 
-## Para integrar depois ao projeto do grupo
 
 1. Copiar `app/` para `services/ms-paciente/`.
 2. Ajustar o Dockerfile para o padrão do repositório (build context na raiz e instalação de `libs/pet_shared`).
