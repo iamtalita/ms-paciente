@@ -1,0 +1,29 @@
+services:
+  db-paciente:
+    image: postgres:16-alpine
+    container_name: paciente_db_demo
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: db_paciente
+    ports:
+      - "5437:5432"
+    volumes:
+      - paciente_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d db_paciente"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  ms-paciente:
+    build: .
+    container_name: paciente_api_demo
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db-paciente:5432/db_paciente
+    ports:
+      - "8005:8005"
+    depends_on:
+      db-paciente:
+        condition: service_healthy
+volumes:
+  paciente_data:
