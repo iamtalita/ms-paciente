@@ -1,8 +1,5 @@
 # Microsserviço de Paciente — PS Saúde Digital
 
-Versão independente para apresentação e teste local, sem modificar o repositório das colegas. Usa Python 3.12, FastAPI, SQLAlchemy assíncrono, PostgreSQL e Docker.
-
-> **Atenção:** esta versão é para demonstração local. As rotas ainda não têm autenticação/autorização e não validam a existência da UBS via `ms-ubs`. Não use dados reais de pacientes. Antes da integração ao sistema real, conectar JWT/roles com `pet_shared`, validar a UBS por API e incluir a rota no gateway.
 
 ## Estrutura
 
